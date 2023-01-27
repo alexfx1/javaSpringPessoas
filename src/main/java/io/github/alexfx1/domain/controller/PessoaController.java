@@ -1,9 +1,11 @@
 package io.github.alexfx1.domain.controller;
 
+import io.github.alexfx1.domain.dto.PessoaDTO;
 import io.github.alexfx1.domain.entity.Pessoa;
 import io.github.alexfx1.domain.service.PessoaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +23,10 @@ public class PessoaController {
 
     @PostMapping("/pessoa")
     @ApiOperation(value = "Cadastrar Pessoa")
-    public ResponseEntity<Pessoa> savarPessoa(@RequestBody Pessoa pessoa){
-        Pessoa criarPessoa = pessoaService.criarPessoa(pessoa);
-        return new ResponseEntity<>(criarPessoa,HttpStatus.CREATED);
+    public ResponseEntity<Pessoa> savarPessoa(@RequestBody PessoaDTO pessoaDTO){
+        Pessoa pessoa = new Pessoa();
+        BeanUtils.copyProperties(pessoaDTO,pessoa);
+        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.criarPessoa(pessoa));
     }
 
     @GetMapping("/pessoa/{id}")
