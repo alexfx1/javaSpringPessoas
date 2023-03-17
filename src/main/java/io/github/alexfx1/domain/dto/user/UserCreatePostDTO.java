@@ -1,18 +1,17 @@
-package io.github.alexfx1.domain.dto;
+package io.github.alexfx1.domain.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PessoaDTO {
-    private String nome;
-    private Date dtNascimento;
-    private String cpf;
+public class UserCreatePostDTO {
+    private String login;
+    private String senha;
+    private boolean admin;
 }
+

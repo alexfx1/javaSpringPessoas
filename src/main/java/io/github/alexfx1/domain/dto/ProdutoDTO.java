@@ -1,18 +1,24 @@
 package io.github.alexfx1.domain.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.math.BigDecimal;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PessoaDTO {
-    private String nome;
-    private Date dtNascimento;
-    private String cpf;
+public class ProdutoDTO {
+    private String nomeProduto;
+
+    private String marca;
+
+    private String descricao;
+
+    private BigDecimal preco;
 }

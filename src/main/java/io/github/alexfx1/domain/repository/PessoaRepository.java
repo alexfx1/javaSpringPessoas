@@ -15,6 +15,9 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
     @Modifying
     @Query(nativeQuery = true, value = "UPDATE PESSOA SET ENDERECOS = :json WHERE PESSOA_ID = :pessoa_id")
     void listaEnderecos(@Param("pessoa_id") Long idPessoa, @Param("json") String json);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM PESSOA C LEFT JOIN PEDIDOS WHERE c.idPessoa = :pessoa_id")
+    Pessoa findPessoaFetchPedidos(@Param("pessoa_id") Long idPessoa);
 }
 
 

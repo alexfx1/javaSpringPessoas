@@ -14,8 +14,7 @@ import javax.persistence.*;
 public class Endereco {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "seq_endereco")
-    @SequenceGenerator(name = "seq_endereco",sequenceName = "seq_endereco")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "endereco_id", nullable = false)
     private Long idEndereco;
 

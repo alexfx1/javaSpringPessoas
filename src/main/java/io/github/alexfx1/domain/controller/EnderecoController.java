@@ -15,15 +15,14 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/api/endereco")
 @Api(value = "Api Rest Endereco")
-@CrossOrigin(origins = "*")
 public class EnderecoController {
 
     @Autowired
     private EnderecoService enderecoService;
 
-    @PostMapping("/endereco")
+    @PostMapping
     @ApiOperation(value = "Criar Endereco Para pessoa")
     public ResponseEntity<Endereco> savarEnderecoParaPessoa(@RequestBody EnderecoDTO enderecoDTO){
         Endereco endereco = new Endereco();
@@ -31,14 +30,14 @@ public class EnderecoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(enderecoService.criarEndereco(endereco));
     }
 
-    @GetMapping("/endereco/listar")
+    @GetMapping("/listar")
     @ApiOperation(value = "Lista todos os enderecos para a pessoa cadastrada")
     public ResponseEntity<List<Endereco>> listarEnderecos(@RequestParam Long idPessoa){
         List<Endereco> list = enderecoService.listarEnderecos(idPessoa);
         return new ResponseEntity<>(list,HttpStatus.OK);
     }
 
-    @GetMapping("/endereco/{id}")
+    @GetMapping("/{id}")
     @ApiOperation(value = "Lista todos os enderecos principais para a pessoa")
     public ResponseEntity<List<Endereco>> enderecoPrincipal(@RequestParam Long idPessoa){
         List<Endereco> list = enderecoService.enderecoPrincipal(idPessoa);
