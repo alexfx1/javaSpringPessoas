@@ -52,7 +52,7 @@ public class ProdutoService {
             return produtoRepository.findById(id);
         } catch (Exception ex){
             System.out.println("Produto com este id nao encontrado! --> " + id + " " + ex);
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa com este id nao encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto com este id nao encontrado!");
         }
     }
 
