@@ -15,6 +15,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+.github
 *.iws
 *.iml
 *.ipr
