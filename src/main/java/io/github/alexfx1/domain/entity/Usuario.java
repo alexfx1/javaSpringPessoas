@@ -28,4 +28,11 @@ public class Usuario {
 
     @Column(name = "admin")
     private boolean admin;
+
+    @Column(name = "email")
+    @NotEmpty
+    private String email;
+
+    @Column(name = "password_code", nullable = true)
+    private Integer passwordCode;
 }

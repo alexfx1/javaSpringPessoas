@@ -19,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/pessoa")
 @Api(value = "Api Rest Pessoas")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PessoaController {
     @Autowired
     private PessoaService pessoaService;

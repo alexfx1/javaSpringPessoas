@@ -9,10 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserCreatePostDTO {
+public class UserUpdatePutDTO {
     private String login;
-    private String senha;
     private boolean admin;
     private String email;
 }
-

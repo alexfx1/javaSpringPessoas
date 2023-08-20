@@ -55,6 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/pedido/**").hasAnyRole("AMIN", "USER")
                 .antMatchers("/api/produto/**").hasAnyRole("AMIN", "USER")
                 .antMatchers(HttpMethod.POST,"/api/usuario/**").permitAll()
+                .antMatchers(HttpMethod.PATCH,"/api/usuario/**").permitAll()
+                .antMatchers(HttpMethod.PUT,"/api/usuario/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
