@@ -133,4 +133,38 @@
         </plugins>
     </build>
 
+    <profiles>
+        <!-- LOCAL -->
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profile>local</spring.profile>
+            </properties>
+        </profile>
+        <!-- DESENVOLVIMENTO -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.profile>dev</spring.profile>
+            </properties>
+        </profile>
+        <!-- HOMOLOGACAO -->
+        <profile>
+            <id>hml</id>
+            <properties>
+                <spring.profile>hml</spring.profile>
+            </properties>
+        </profile>
+        <!-- PRODUCAO -->
+        <profile>
+            <id>prd</id>
+            <properties>
+                <spring.profile>prd</spring.profile>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>
