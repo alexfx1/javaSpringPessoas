@@ -1,6 +1,7 @@
 package io.github.alexfx1.domain.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -8,6 +9,7 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Collections;
 import java.util.Arrays;
 
+@Configuration
 public class CorsConfig {
 
     @Bean
@@ -22,10 +24,9 @@ public class CorsConfig {
                 "Access-Control-Allow-Origin", "Access-Control-Credentials"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
-        UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
-        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", configuration);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
 
-        return new CorsFilter(urlBasedCorsConfigurationSource);
+        return new CorsFilter(source);
     }
-
 }

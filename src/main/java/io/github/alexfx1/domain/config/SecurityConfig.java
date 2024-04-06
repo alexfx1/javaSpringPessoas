@@ -45,18 +45,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.headers().frameOptions().disable();
 
         http.csrf().disable()
+                .cors()  // Enable CORS
+                .and()
                 .authorizeRequests()
                 .antMatchers("/api/pessoa/**").hasAnyRole("AMIN", "USER")
                 .antMatchers("/api/endereco/**").hasAnyRole("AMIN", "USER")
                 .antMatchers("/api/pedido/**").hasAnyRole("AMIN", "USER")
                 .antMatchers("/api/produto/**").hasAnyRole("AMIN", "USER")
-                .antMatchers(HttpMethod.POST,"/api/usuario/**").permitAll()
-                .antMatchers(HttpMethod.PATCH,"/api/usuario/**").permitAll()
-                .antMatchers(HttpMethod.PUT,"/api/usuario/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/usuario/**").permitAll()
+                .antMatchers(HttpMethod.PATCH, "/api/usuario/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/usuario/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
@@ -64,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {
