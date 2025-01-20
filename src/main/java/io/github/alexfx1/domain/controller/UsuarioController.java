@@ -58,7 +58,7 @@ public class UsuarioController {
 
     @PatchMapping("/forget-password")
     @ApiOperation(value = "mudar de senha")
-    public String generateNewPassword(@RequestParam String email, int code, String passwordNew) {
+    public String generateNewPassword(@RequestParam String email, @RequestParam int code, @RequestParam String passwordNew) {
         return userService.forgetPassword(email,code,passwordNew);
     }
 }

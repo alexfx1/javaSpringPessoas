@@ -1,21 +1,19 @@
 package io.github.alexfx1;
 
-import org.springframework.boot.SpringApplication;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 
-import java.util.Arrays;
-import java.util.Collections;
-
+@Slf4j
 @SpringBootApplication
 public class PessoasApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PessoasApplication.class, args);
+        ConfigurableApplicationContext app = new SpringApplicationBuilder(PessoasApplication.class).run();
+        Environment env = app.getEnvironment();
+        String applicationPort = env.getProperty("server.port");
+        log.info("Access URL for development: http://localhost:{}/swagger-ui.html", applicationPort);
     }
-    // When application is running please access: http://localhost:8081/swagger-ui.html
-    // User for test login: alex, 123
 }
